@@ -5,3 +5,7 @@ As informações descritivas obtidas se referem à remuneração nominal média 
 O resultado do trabalho pode ser visto na seguinte página:
 
 <https://osvaldoquintellajr.github.io/RAIS_2023_Parcial_Dados_Descritivos/>
+
+O código que gera os resultados pode ser visto no seguinte link:
+<https://github.com/osvaldoquintellajr/RAIS_2023_Parcial_Dados_Descritivos/blob/main/docs/index.Rmd>
+

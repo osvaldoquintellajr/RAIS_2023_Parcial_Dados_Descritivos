@@ -1,0 +1,189 @@
+---
+title: "Dados descritivos RAIS 2023 Parcial"
+author: "Osvaldo Martins Quintella Junior"
+date: "Last edited `r format(Sys.time(), '%d %B %Y')`"
+output:
+  html_document:
+    df_print: paged
+email_adress: osvaldoquintellajr@gmail.com
+github_repo: https://github.com/osvaldoquintellajr/RAIS_2023_Parcial_Dados_Descritivos
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(fig.align = 'center')
+options(scipen=999)
+```
+
+```{r carregar os pacotes necessários, include=FALSE}
+library(readr)
+library(tidyverse)
+```
+
+```{r ler os dados do computador e selecionar as variáveis de interesse, include=FALSE}
+RAIS_VINC_PUB_MG_ES_RJ <- read_delim("D:/Documentos/github/Rais/vínculos/RAIS_VINC_PUB_MG_ES_RJ.txt", 
+                                     delim = ";", escape_double = FALSE, 
+                                     locale = locale(encoding = "WINDOWS-1252"), 
+                                     trim_ws = TRUE)
+
+RAIS_VINC_PUB_MG_ES_RJ <- RAIS_VINC_PUB_MG_ES_RJ %>% select(`Escolaridade após 2005`,
+                                                            `Raça Cor`, 
+                                                            `Vl Remun Média Nom`,
+                                                            `Sexo Trabalhador`) 
+RAIS_VINC_PUB_CENTRO_OESTE <-  read_delim("D:/Documentos/github/Rais/vínculos/RAIS_VINC_PUB_CENTRO_OESTE.txt", 
+                                          delim = ";", escape_double = FALSE, 
+                                          locale = locale(encoding = "WINDOWS-1252"), 
+                                          trim_ws = TRUE)
+
+RAIS_VINC_PUB_CENTRO_OESTE <- RAIS_VINC_PUB_CENTRO_OESTE %>% select(`Escolaridade após 2005`,
+                                                            `Raça Cor`, 
+                                                            `Vl Remun Média Nom`,
+                                                            `Sexo Trabalhador`) 
+
+RAIS_VINC_PUB_NI <-  read_delim("D:/Documentos/github/Rais/vínculos/RAIS_VINC_PUB_NI.txt", 
+                                          delim = ";", escape_double = FALSE, 
+                                          locale = locale(encoding = "WINDOWS-1252"), 
+                                          trim_ws = TRUE)
+
+RAIS_VINC_PUB_NI <- RAIS_VINC_PUB_NI %>% select(`Escolaridade após 2005`,
+                                                                    `Raça Cor`, 
+                                                                    `Vl Remun Média Nom`,
+                                                                    `Sexo Trabalhador`) 
+
+RAIS_VINC_PUB_NORDESTE <-  read_delim("D:/Documentos/github/Rais/vínculos/RAIS_VINC_PUB_NORDESTE.txt", 
+                                delim = ";", escape_double = FALSE, 
+                                locale = locale(encoding = "WINDOWS-1252"), 
+                                trim_ws = TRUE)
+
+RAIS_VINC_PUB_NORDESTE <- RAIS_VINC_PUB_NORDESTE %>% select(`Escolaridade após 2005`,
+                                                `Raça Cor`, 
+                                                `Vl Remun Média Nom`,
+                                                `Sexo Trabalhador`) 
+
+RAIS_VINC_PUB_NORTE <-  read_delim("D:/Documentos/github/Rais/vínculos/RAIS_VINC_PUB_NORTE.txt", 
+                                      delim = ";", escape_double = FALSE, 
+                                      locale = locale(encoding = "WINDOWS-1252"), 
+                                      trim_ws = TRUE)
+
+RAIS_VINC_PUB_NORTE <- RAIS_VINC_PUB_NORTE %>% select(`Escolaridade após 2005`,
+                                                            `Raça Cor`, 
+                                                            `Vl Remun Média Nom`,
+                                                            `Sexo Trabalhador`) 
+
+RAIS_VINC_PUB_SP <-  read_delim("D:/Documentos/github/Rais/vínculos/RAIS_VINC_PUB_SP.txt", 
+                                  delim = ";", escape_double = FALSE, 
+                                  locale = locale(encoding = "WINDOWS-1252"), 
+                                  trim_ws = TRUE)
+
+RAIS_VINC_PUB_SP <- RAIS_VINC_PUB_SP %>% select(`Escolaridade após 2005`,
+                                                    `Raça Cor`, 
+                                                    `Vl Remun Média Nom`,
+                                                    `Sexo Trabalhador`) 
+
+RAIS_VINC_PUB_SUL <-  read_delim("D:/Documentos/github/Rais/vínculos/RAIS_VINC_PUB_SUL.txt", 
+                                delim = ";", escape_double = FALSE, 
+                                locale = locale(encoding = "WINDOWS-1252"), 
+                                trim_ws = TRUE)
+
+RAIS_VINC_PUB_SUL <- RAIS_VINC_PUB_SUL %>% select(`Escolaridade após 2005`,
+                                                `Raça Cor`, 
+                                                `Vl Remun Média Nom`,
+                                                `Sexo Trabalhador`) 
+```
+
+```{r substituir vírgula por ponto, include=FALSE}
+RAIS_VINC_PUB_MG_ES_RJ$`Vl Remun Média Nom` <-  as.numeric(gsub(",", ".", RAIS_VINC_PUB_MG_ES_RJ$`Vl Remun Média Nom`))
+
+RAIS_VINC_PUB_CENTRO_OESTE$`Vl Remun Média Nom` <-  as.numeric(gsub(",", ".", RAIS_VINC_PUB_CENTRO_OESTE$`Vl Remun Média Nom`))
+
+RAIS_VINC_PUB_NI$`Vl Remun Média Nom` <-  as.numeric(gsub(",", ".", RAIS_VINC_PUB_NI$`Vl Remun Média Nom`))
+
+RAIS_VINC_PUB_NORDESTE$`Vl Remun Média Nom` <-  as.numeric(gsub(",", ".", RAIS_VINC_PUB_NORDESTE$`Vl Remun Média Nom`))
+
+RAIS_VINC_PUB_NORTE$`Vl Remun Média Nom` <-  as.numeric(gsub(",", ".", RAIS_VINC_PUB_NORTE$`Vl Remun Média Nom`))
+
+RAIS_VINC_PUB_SP$`Vl Remun Média Nom` <-  as.numeric(gsub(",", ".", RAIS_VINC_PUB_SP$`Vl Remun Média Nom`))
+
+RAIS_VINC_PUB_SUL$`Vl Remun Média Nom` <-  as.numeric(gsub(",", ".", RAIS_VINC_PUB_SUL$`Vl Remun Média Nom`))
+```
+
+```{r unir todas os data frames num único data frame, include=FALSE}
+my.df <- bind_rows(RAIS_VINC_PUB_SUL,
+                   RAIS_VINC_PUB_SP,
+                   RAIS_VINC_PUB_NORTE,
+                   RAIS_VINC_PUB_NORDESTE,
+                   RAIS_VINC_PUB_NI,
+                   RAIS_VINC_PUB_CENTRO_OESTE,
+                   RAIS_VINC_PUB_MG_ES_RJ)
+```
+
+```{r remover os dataframe que não são necessários, include=FALSE}
+rm(RAIS_VINC_PUB_CENTRO_OESTE,RAIS_VINC_PUB_MG_ES_RJ,RAIS_VINC_PUB_NI,RAIS_VINC_PUB_NORDESTE,
+   RAIS_VINC_PUB_NORTE,RAIS_VINC_PUB_SP,RAIS_VINC_PUB_SUL)
+```
+
+```{r converter as variáveis que são character para numeric, include=FALSE}
+my.df$`Escolaridade após 2005` <- as.numeric(my.df$`Escolaridade após 2005`)
+my.df$`Raça Cor` <- as.numeric(my.df$`Raça Cor`)
+my.df$`Sexo Trabalhador` <- as.numeric(my.df$`Sexo Trabalhador`)
+```
+
+```{r converter as variáveis para factor e renomeá-las, include=FALSE}
+my.df <- my.df %>% mutate(`Escolaridade após 2005` = as_factor(if_else(`Escolaridade após 2005` == 1, "Analfabeto", 
+                                                                 if_else(`Escolaridade após 2005` == 2, "Ate_5_série",
+                                                                        if_else(`Escolaridade após 2005` == 3, "5_série_completa",
+                                                                               if_else(`Escolaridade após 2005` == 4, "6_a_9_série_completa",
+                                                                                      if_else(`Escolaridade após 2005` == 5, "Ensino_fundamental_completo",
+                                                                                             if_else(`Escolaridade após 2005` == 6, "Ensino_médio_incompleto",
+                                                                                                    if_else(`Escolaridade após 2005` == 7, "Ensino_médio_completo",
+                                                                                                           if_else(`Escolaridade após 2005` == 8, "Ensino_superior_incompleto",
+                                                                                                                  if_else(`Escolaridade após 2005` == 9, "Ensino_superior_completo",
+                                                                                                                         if_else(`Escolaridade após 2005` == 10, "Mestrado",
+                                                                                                                                if_else(`Escolaridade após 2005` == 11, "Doutorado", NA)))))))))))))
+
+
+my.df <- my.df %>% mutate(`Raça Cor`= as_factor(if_else(`Raça Cor` == 1, "Indigena",
+                                                        if_else(`Raça Cor` == 2, "Branca",
+                                                                if_else(`Raça Cor` == 4, "Preta",
+                                                                        if_else(`Raça Cor` == 6, "Amarela",
+                                                                                if_else(`Raça Cor` == 8, "Parda", NA)))))))
+
+my.df <- my.df %>% mutate(`Sexo Trabalhador` = as_factor(if_else(`Sexo Trabalhador` == 1, "Masculino",
+                                                                 if_else(`Sexo Trabalhador` == 2, "Feminino", NA))))
+```
+
+```{r renomear a variável escolaridade, include=FALSE}
+my.df <- my.df %>% rename(Escolaridade = `Escolaridade após 2005`)
+```
+
+#### **Remuneração Nominal Média por Sexo.**
+
+```{r remuneração nominal média por sexo e desvio-padrão, include=FALSE}
+my.df1 <- my.df %>% group_by(`Sexo Trabalhador`) %>% summarise(`Remuneração Média por sexo` = mean(`Vl Remun Média Nom`),
+                                                     `Desvio Padrão` = sd(`Vl Remun Média Nom`))
+```
+
+```{r echo=FALSE}
+my.df1
+```
+
+#### **Remuneração Nominal Média por Escolaridade e Sexo**
+
+```{r remuneração nominal média por escolaridade e sexo, include=FALSE}
+my.df2 <- my.df %>% group_by(Escolaridade ,`Sexo Trabalhador`) %>% summarise(`Remuneração Média por sexo` = mean(`Vl Remun Média Nom`),
+                                                                   `Desvio Padrão` = sd(`Vl Remun Média Nom`))
+```
+
+```{r echo=FALSE}
+my.df2
+```
+
+#### **Remuneração Nominal Média por Raça_cor e Sexo**
+
+```{r remuneração nominal média por Raça_cor e Sexo, include=FALSE}
+my.df3 <- my.df %>% group_by(`Raça Cor` ,`Sexo Trabalhador`) %>% summarise(`Remuneração Média por sexo` = mean(`Vl Remun Média Nom`),
+                                                                   `Desvio Padrão` = sd(`Vl Remun Média Nom`))
+```
+
+```{r echo=FALSE}
+my.df3
+```
